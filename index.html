@@ -566,30 +566,73 @@
             line-height: 1.7;
         }
 
-        /* ── Service Carousel ── */
+        /* ── Service Tab + Carousel ── */
         .services-carousel-wrapper {
             position: relative;
-            padding: 0 3.5rem;
+            width: 100%;
+            padding: 0 2.5rem;
         }
 
+        /* Tab buttons row */
+        .svc-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-bottom: 2.4rem;
+            padding: 0 0.5rem;
+        }
+
+        .svc-tab {
+            padding: 0.55rem 1.3rem;
+            border-radius: 50px;
+            border: 1px solid rgba(209, 178, 128, 0.25);
+            background: rgba(255,255,255,0.04);
+            color: rgba(209, 178, 128, 0.65);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .svc-tab:hover {
+            border-color: rgba(209, 178, 128, 0.6);
+            color: #d1b280;
+            background: rgba(209, 178, 128, 0.08);
+        }
+
+        .svc-tab.active {
+            background: rgba(209, 178, 128, 0.15);
+            border-color: rgba(209, 178, 128, 0.8);
+            color: #d1b280;
+            box-shadow: 0 0 16px rgba(209, 178, 128, 0.15);
+        }
+
+        /* Carousel track */
         .services-carousel-track-outer {
             overflow: hidden;
+            position: relative;
         }
 
         .services-grid {
             display: flex;
-            gap: 1.8rem;
+            gap: 1.6rem;
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
         .service-card {
-            flex: 0 0 calc(33.333% - 1.2rem);
+            flex: 0 0 calc(33.333% - 1.1rem);
             min-width: 0;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
             background: rgba(87, 70, 3, 0.45);
             border: 1px solid rgba(209, 178, 128, 0.15);
             border-radius: 20px;
-            padding: 2.5rem 2rem;
+            padding: 2.2rem 2rem 3rem;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -598,6 +641,16 @@
                         border-color 0.35s ease;
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(209, 178, 128, 0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(209,178,128,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .service-card { flex: 0 0 85%; }
         }
 
         .service-card::before {
@@ -629,14 +682,52 @@
         }
 
         .service-icon {
-            font-size: 2.8rem;
             margin-bottom: 1.2rem;
-            display: inline-block;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .service-card:hover .service-icon {
-            transform: scale(1.15) rotate(6deg);
+        .service-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.06);
+            padding: 5px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.35s ease;
+            filter: brightness(0.9);
+        }
+
+        .service-card:hover .service-icon img {
+            transform: translateY(-4px) scale(1.12);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            filter: brightness(1.15);
+        }
+
+        .service-card:hover .service-icon img:nth-child(2) { transition-delay: 0.05s; }
+        .service-card:hover .service-icon img:nth-child(3) { transition-delay: 0.10s; }
+
+        .service-icon i {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.35s ease;
+        }
+
+        .service-card:hover .service-icon i {
+            transform: translateY(-4px) scale(1.12);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
         }
 
         .service-title {
@@ -674,11 +765,11 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            border: 1px solid rgba(209, 178, 128, 0.3);
-            background: rgba(45, 28, 10, 0.7);
+            border: 1px solid rgba(209, 178, 128, 0.35);
+            background: rgba(27, 20, 12, 0.85);
             color: #d1b280;
             font-size: 1rem;
             cursor: pointer;
@@ -686,25 +777,25 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
-            z-index: 5;
+            backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
         .svc-carousel-btn:hover {
-            background: rgba(209, 178, 128, 0.2);
-            border-color: rgba(209, 178, 128, 0.7);
-            box-shadow: 0 0 16px rgba(209, 178, 128, 0.2);
-            transform: translateY(-50%) scale(1.08);
+            background: rgba(209, 178, 128, 0.18);
+            border-color: rgba(209, 178, 128, 0.8);
+            box-shadow: 0 0 20px rgba(209, 178, 128, 0.25);
+            transform: translateY(-50%) scale(1.1);
         }
 
         .svc-carousel-btn:disabled {
-            opacity: 0.3;
+            opacity: 0.25;
             cursor: not-allowed;
             transform: translateY(-50%) scale(1);
         }
 
-        .svc-carousel-btn.prev { left: 0; }
-        .svc-carousel-btn.next { right: 0; }
+        .svc-carousel-btn.prev { left: -1.5rem; }
+        .svc-carousel-btn.next { right: -1.5rem; }
 
         /* ── Carousel Dots ── */
         .svc-carousel-dots {
@@ -729,6 +820,88 @@
             transform: scale(1.35);
             box-shadow: 0 0 8px rgba(209, 178, 128, 0.5);
         }
+
+        /* Service Modal Inner Carousel */
+        .svc-modal-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(209,178,128,0.12);
+        }
+        .svc-modal-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+            will-change: transform;
+        }
+        .svc-modal-slide {
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            min-height: 260px;
+        }
+        .svc-modal-slide-img {
+            flex: 0 0 62%;
+            width: 62%;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #1a1412, #2a1f1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .svc-modal-slide-img img { width:100%; height:100%; object-fit:cover; display:block; }
+        .svc-modal-placeholder {
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:0.7rem; width:100%; height:100%;
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(45,28,10,0.92), rgba(27,20,12,0.97));
+        }
+        .svc-modal-placeholder i { font-size:2.4rem; color:rgba(209,178,128,0.3); }
+        .svc-modal-placeholder span {
+            font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+            color:rgba(209,178,128,0.35); text-align:center; padding:0 1rem;
+        }
+        .svc-modal-slide-badge {
+            position:absolute; top:0.7rem; right:0.7rem;
+            background:rgba(10,8,5,0.75); border:1px solid rgba(209,178,128,0.25);
+            border-radius:20px; padding:3px 10px; font-size:0.65rem;
+            color:rgba(209,178,128,0.8); letter-spacing:1px; backdrop-filter:blur(6px);
+        }
+        .svc-modal-slide-body {
+            flex: 1;
+            padding: 1.4rem 1.2rem;
+            border-left: 1px solid rgba(209,178,128,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .svc-modal-slide-label {
+            font-size:0.62rem; font-weight:700; letter-spacing:2px;
+            text-transform:uppercase; color:#d1b280;
+        }
+        .svc-modal-slide-title {
+            font-family:'Playfair Display',serif; font-size:1rem;
+            font-weight:700; color:#fff;
+        }
+        .svc-modal-slide-desc { font-size:0.85rem; color:rgba(255,255,255,0.62); line-height:1.6; }
+        .svc-modal-nav {
+            position:absolute; top:50%; transform:translateY(-50%);
+            width:32px; height:32px; border-radius:50%;
+            border:1px solid rgba(209,178,128,0.3); background:rgba(10,8,5,0.75);
+            color:#d1b280; font-size:0.78rem; cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            backdrop-filter:blur(8px); transition:all 0.25s ease; z-index:5;
+        }
+        .svc-modal-nav:hover { background:rgba(209,178,128,0.2); border-color:#d1b280; }
+        .svc-modal-nav.prev { left:0.6rem; }
+        .svc-modal-nav.next { right:0.6rem; }
+        .svc-modal-counter {
+            text-align:center; font-size:0.68rem; color:rgba(209,178,128,0.45);
+            letter-spacing:1px; margin-top:-0.8rem; margin-bottom:1.4rem;
+        }
         .service-modal-overlay {
             position: fixed;
             inset: 0;
@@ -752,12 +925,12 @@
 
         .service-modal {
             position: relative;
-            max-width: 560px;
+            max-width: 820px;
             width: 100%;
             background: rgba(209, 178, 128, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 3rem 2.8rem 2.5rem;
+            border-radius: 12px;
+            padding: 1.8rem 2rem 2rem;
             backdrop-filter: blur(32px);
             -webkit-backdrop-filter: blur(32px);
             box-shadow:
@@ -827,17 +1000,44 @@
         }
 
         .modal-icon-wrap {
-            width: 72px;
-            height: 72px;
+            width: auto;
+            min-height: 52px;
+            border-radius: 10px;
+            background: rgba(209, 178, 128, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.04);
+            width: fit-content;
+        }
+
+        .modal-icon-wrap img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
             border-radius: 6px;
-            background: rgba(209, 178, 128, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.06);
+            padding: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-icon-wrap i {
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+            color: #fff;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
         }
 
         .modal-title {
@@ -860,7 +1060,7 @@
             border: 1px solid rgba(209, 178, 128, 0.3);
             border-radius: 30px;
             padding: 4px 14px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .modal-divider {
@@ -868,14 +1068,14 @@
             height: 2px;
             background: linear-gradient(90deg, #d1b280, rgba(209, 178, 128, 0.3));
             border-radius: 2px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .modal-description {
             color: rgba(255, 255, 255, 0.78);
             font-size: 1.05rem;
             line-height: 1.8;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1rem;
         }
 
         .modal-features {
@@ -2155,47 +2355,72 @@
                 <div class="services-carousel-track-outer">
                     <div class="services-grid" id="servicesTrack">
 
-                        <div class="service-card" onclick="openServiceModal('webdesign')">
-                            <div class="service-icon"><i class="fas fa-palette"></i></div>
-                            <h3 class="service-title">Web Design</h3>
-                            <p class="service-description">Creating stunning, user-friendly interfaces that captivate audiences and drive engagement.</p>
+                        <div class="service-card" onclick="openServiceModal('va')">
+                            <div class="service-icon">
+                                <img src="https://cdn.simpleicons.org/google/ffffff" alt="Google">
+                                <i class="fas fa-book" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-comment-dots" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;"></i>
+                            </div>
+                            <h3 class="service-title">Virtual Assistant</h3>
+                            <p class="service-description">Your time is your most valuable asset. I handle the admin so you can focus on what actually grows your business.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('development')">
-                            <div class="service-icon"><i class="fas fa-code"></i></div>
-                            <h3 class="service-title">Development</h3>
-                            <p class="service-description">Building responsive, high-performance websites and applications using modern technologies.</p>
+                        <div class="service-card" onclick="openServiceModal('socialmedia')">
+                            <div class="service-icon">
+                                <img src="https://cdn.simpleicons.org/meta/ffffff" alt="Meta">
+                                <i class="fas fa-paint-brush" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-calendar-alt" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                            </div>
+                            <h3 class="service-title">Social Media Management</h3>
+                            <p class="service-description">Stay consistently visible online — without spending your entire day on it. I plan, create, and manage it all.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('branding')">
-                            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                            <h3 class="service-title">Brand Identity</h3>
-                            <p class="service-description">Developing cohesive visual identities that communicate your brand's values and resonate with your audience.</p>
+                        <div class="service-card" onclick="openServiceModal('videoediting')">
+                            <div class="service-icon">
+                                <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok">
+                                <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram">
+                                <img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube">
+                            </div>
+                            <h3 class="service-title">Short-Form Video Editing</h3>
+                            <p class="service-description">Scroll-stopping Reels, TikToks, and Shorts — edited for maximum reach, retention, and conversions.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('strategy')">
-                            <div class="service-icon"><i class="fas fa-rocket"></i></div>
-                            <h3 class="service-title">Digital Strategy</h3>
-                            <p class="service-description">Crafting comprehensive digital strategies to enhance online presence and achieve measurable goals.</p>
+                        <div class="service-card" onclick="openServiceModal('aisetup')">
+                            <div class="service-icon">
+                                <i class="fas fa-robot" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-brain" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-cogs" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                            </div>
+                            <h3 class="service-title">AI Setup & Automation</h3>
+                            <p class="service-description">Work smarter, not harder. I set up AI tools and automated workflows that save you hours every single week.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('uiux')">
-                            <div class="service-icon"><i class="fas fa-pencil-ruler"></i></div>
-                            <h3 class="service-title">UI/UX Design</h3>
-                            <p class="service-description">Designing intuitive user experiences that balance aesthetics with functionality for optimal satisfaction.</p>
+                        <div class="service-card" onclick="openServiceModal('websitecontent')">
+                            <div class="service-icon">
+                                <img src="https://cdn.simpleicons.org/wordpress/ffffff" alt="WordPress">
+                                <img src="https://cdn.simpleicons.org/webflow/ffffff" alt="Webflow">
+                                <img src="https://cdn.simpleicons.org/wix/ffffff" alt="Wix">
+                            </div>
+                            <h3 class="service-title">Website & Landing Page Content</h3>
+                            <p class="service-description">Your website should work as hard as you do. I write copy that earns trust, communicates value, and drives action.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('consulting')">
-                            <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                            <h3 class="service-title">Consulting</h3>
-                            <p class="service-description">Providing expert guidance on design, development, and digital transformation to help your business thrive.</p>
+                        <div class="service-card" onclick="openServiceModal('leadgen')">
+                            <div class="service-icon">
+                                <i class="fab fa-linkedin" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-table" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                                <i class="fas fa-book" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
+                            </div>
+                            <h3 class="service-title">Lead Generation & Research</h3>
+                            <p class="service-description">Stop chasing cold leads. I find, qualify, and deliver your ideal prospects so your pipeline stays full.</p>
                             <span class="click-hint">Tap to explore →</span>
                         </div>
+
 
                     </div>
                 </div>
@@ -2229,6 +2454,15 @@
             <div class="modal-category-tag" id="modalTag"></div>
             <h2 class="modal-title" id="modalTitle"></h2>
             <div class="modal-divider"></div>
+
+            <!-- Inner Image Carousel -->
+            <div class="svc-modal-carousel" id="svcModalCarousel">
+                <div class="svc-modal-track" id="svcModalTrack"></div>
+                <button class="svc-modal-nav prev" id="svcModalPrev" onclick="moveSvcModalSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="svc-modal-nav next" id="svcModalNext" onclick="moveSvcModalSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="svc-modal-counter" id="svcModalCounter">1 / 4</div>
+
             <p class="modal-description" id="modalDesc"></p>
             <ul class="modal-features" id="modalFeatures"></ul>
             <a href="#contact" class="modal-cta" onclick="closeServiceModal()">
@@ -2430,7 +2664,7 @@
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank"
                        class="email-oval-text">
-                        deleonmike84@gmail.com
+                        <span class="__cf_email__" data-cfemail="6105040d040e0f0c080a04595521060c00080d4f020e0c">[email&#160;protected]</span>
                     </a>
                     <button class="copy-btn" onclick="copyEmailAddress()" id="copyBtn">
                         <i class="fas fa-copy" id="copyIcon"></i>
@@ -2470,7 +2704,7 @@
         <p>&copy; 2026 M.Deleon-Freelance. All rights reserved. Crafted with Passion and Precision.</p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ─── Copy Email to Clipboard ───
         function copyEmailAddress() {
             const email = "deleonmike84@gmail.com";
@@ -2564,85 +2798,187 @@
 
         // ─── Service Modal Data ───
         const serviceData = {
-            webdesign: {
-                icon: '<i class="fas fa-palette"></i>',
-                tag: 'Creative Design',
-                title: 'Web Design',
-                desc: 'Crafting stunning, user-centered interfaces that don\'t just look great — they convert. Every pixel is intentional, every interaction deliberate, designed to captivate and guide your audience.',
+            va: {
+                icon: '<img src="https://cdn.simpleicons.org/google/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="Google"><i class=\"fas fa-book\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-comment-dots\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i>',
+                tag: 'Smart VA Services',
+                title: 'Virtual Assistant',
+                desc: 'Your time is too valuable to spend on admin tasks. I step in as your dedicated VA — handling the day-to-day operations that eat your hours, so you can focus fully on growing your business.',
                 features: [
-                    'Custom layouts built around your brand identity',
-                    'Mobile-first, fully responsive designs',
-                    'Glassmorphism, parallax & modern visual effects',
-                    'Fast-loading, optimized asset delivery',
-                    'Cross-browser compatibility guaranteed'
+                    'Email & calendar management (Google Workspace, Microsoft Office)',
+                    'Data entry, CRM updates & database organization',
+                    'Client follow-ups & communication handling',
+                    'Report & document creation via Notion & Microsoft Office',
+                    'Task coordination via Slack & Notion'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'What I Do', label: 'Overview', title: 'What I Do', desc: 'From inbox management to scheduling, I keep your operations running smoothly every day.' },
+                    { img: null, imgLabel: 'Inbox Zero Strategy', label: 'Email', title: 'Inbox Zero Strategy', desc: 'I sort, respond, and organize your inbox so nothing important ever slips through.' },
+                    { img: null, imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar Coordination', desc: 'Meeting bookings, reminders, and time-blocking handled so your days flow better.' },
+                    { img: null, imgLabel: 'Weekly Updates', label: 'Reports', title: 'Weekly Updates', desc: 'Clear, concise summaries of tasks done, pending, and upcoming in your preferred format.' }
                 ]
             },
-            development: {
-                icon: '<i class="fas fa-code"></i>',
-                tag: 'Full-Stack Build',
-                title: 'Development',
-                desc: 'From clean semantic HTML to dynamic JavaScript and backend integrations — built with performance, scalability, and maintainability at the core.',
+            socialmedia: {
+                icon: '<img src="https://cdn.simpleicons.org/meta/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="Meta"><i class=\"fas fa-paint-brush\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-calendar-alt\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i>',
+                tag: 'Social Media Management',
+                title: 'Social Media Management',
+                desc: 'Consistency is the key to growing online — but posting every day is exhausting. I handle your entire social media presence so your brand stays active, relevant, and engaging without you lifting a finger.',
                 features: [
-                    'HTML5, CSS3, JavaScript (ES6+)',
-                    'Responsive & accessible code structure',
-                    'CMS integration (WordPress, Webflow)',
-                    'API connections & third-party integrations',
-                    'Performance optimization & SEO best practices'
+                    'Content planning & scheduling (Buffer, Meta Business Suite)',
+                    'Caption writing tailored to your brand voice',
+                    'Hashtag research for maximum organic reach',
+                    'Engagement support & community interaction',
+                    'Visual content creation with Canva & Adobe Express'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'Content Planning', label: 'Strategy', title: 'Content Planning', desc: 'A monthly content calendar crafted around your brand, audience, and goals.' },
+                    { img: null, imgLabel: 'Caption and Visuals', label: 'Creation', title: 'Caption and Visuals', desc: 'Eye-catching posts written and designed to match your brand voice perfectly.' },
+                    { img: null, imgLabel: 'Auto-Publishing', label: 'Scheduling', title: 'Auto-Publishing', desc: 'Posts go live at the best times consistently without you lifting a finger.' },
+                    { img: null, imgLabel: 'Performance Tracking', label: 'Analytics', title: 'Performance Tracking', desc: 'Monthly reports showing what is working, what is growing, and what to improve.' }
                 ]
             },
-            branding: {
-                icon: '<i class="fas fa-mobile-alt"></i>',
-                tag: 'Brand Identity',
-                title: 'Brand Identity',
-                desc: 'Your brand is more than a logo — it\'s a feeling. I build cohesive visual identities that communicate your values, earn trust, and create lasting impressions.',
+            videoediting: {
+                icon: '<img src="https://cdn.simpleicons.org/tiktok/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="TikTok"><img src="https://cdn.simpleicons.org/instagram/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="Instagram"><img src="https://cdn.simpleicons.org/youtube/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px" alt="YouTube">',
+                tag: 'Short-Form Video Editing',
+                title: 'Short-Form Video Editing',
+                desc: 'Short-form video is the fastest way to grow an audience right now — but only if it\'s done right. I edit your raw footage into high-retention content built to stop the scroll and drive real results.',
                 features: [
-                    'Logo design & brand mark development',
-                    'Color palette & typography systems',
-                    'Brand guidelines & style documentation',
-                    'Social media kit & digital assets',
-                    'Consistent voice across all touchpoints'
+                    'TikTok, Instagram Reels & YouTube Shorts editing',
+                    'Subtitles, captions & on-screen text overlays',
+                    'Attention-grabbing hooks & CTA text',
+                    'Smooth cuts, transitions & basic color enhancement',
+                    'Edited using CapCut & Canva Video'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'Footage Selection', label: 'Review', title: 'Footage Selection', desc: 'I review all clips and select the best moments to build your video around.' },
+                    { img: null, imgLabel: 'Cuts and Hooks', label: 'Editing', title: 'Cuts and Hooks', desc: 'Fast-paced edits with strong hooks in the first 3 seconds to stop the scroll.' },
+                    { img: null, imgLabel: 'Subtitles and Text', label: 'Captions', title: 'Subtitles and Text', desc: 'Bold, readable captions synced to audio and optimized for mute viewers.' },
+                    { img: null, imgLabel: 'Platform-Ready Output', label: 'Export', title: 'Platform-Ready Output', desc: 'Delivered in the right format and resolution for TikTok, Reels, and Shorts.' }
                 ]
             },
-            strategy: {
-                icon: '<i class="fas fa-rocket"></i>',
-                tag: 'Growth Strategy',
-                title: 'Digital Strategy',
-                desc: 'Data-informed planning that connects your goals to the right digital channels. I map out the roadmap so your online presence becomes a growth engine.',
+            aisetup: {
+                icon: '<i class=\"fas fa-robot\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-brain\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-cogs\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i>',
+                tag: 'AI Setup & Automation',
+                title: 'AI Setup & Automation',
+                desc: 'Faster operations and lower costs using AI. I set up the right tools and automations so your business runs smarter — not harder.',
                 features: [
-                    'Competitive analysis & market research',
-                    'Content & publishing strategy',
-                    'Social media growth planning',
-                    'Funnel design & conversion strategy',
-                    'Monthly KPI tracking & reporting'
+                    'Chatbot setup for customer support or sales',
+                    'AI tools onboarding for your team',
+                    'Workflow automation (Make, Zapier)',
+                    'Prompt creation & optimization for teams',
+                    'Powered by ChatGPT, Claude & Gemini AI'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'Workflow Audit', label: 'Discovery', title: 'Workflow Audit', desc: 'I map your current processes and identify where AI can save you the most time.' },
+                    { img: null, imgLabel: 'Tool Configuration', label: 'Setup', title: 'Tool Configuration', desc: 'ChatGPT, Claude, and Gemini set up and customized for your specific needs.' },
+                    { img: null, imgLabel: 'Workflow Automation', label: 'Automation', title: 'Workflow Automation', desc: 'Repetitive tasks automated via Make so your team focuses on high-value work.' },
+                    { img: null, imgLabel: 'Team Onboarding', label: 'Training', title: 'Team Onboarding', desc: 'Step-by-step training so your team actually uses the tools, not just installs them.' }
                 ]
             },
-            uiux: {
-                icon: '<i class="fas fa-pencil-ruler"></i>',
-                tag: 'User Experience',
-                title: 'UI/UX Design',
-                desc: 'Beautiful design means nothing if users can\'t navigate it. I combine research, wireframing, and visual craft to build experiences that feel effortless.',
+            websitecontent: {
+                icon: '<img src="https://cdn.simpleicons.org/wordpress/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="WordPress"><img src="https://cdn.simpleicons.org/webflow/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px;margin-right:4px" alt="Webflow"><img src="https://cdn.simpleicons.org/wix/ffffff" style="width:26px;height:26px;padding:4px;background:rgba(255,255,255,0.08);border-radius:6px" alt="Wix">',
+                tag: 'Website & Landing Pages',
+                title: 'Website & Landing Page Content',
+                desc: 'A beautiful website means nothing if the words don\'t connect. I write strategic, client-focused content that tells your story clearly, builds credibility instantly, and turns visitors into paying clients.',
                 features: [
-                    'User research & persona mapping',
-                    'Wireframing & interactive prototyping',
-                    'Usability testing & iteration',
-                    'Design system creation (Figma)',
-                    'Micro-animations & interaction design'
+                    'Homepage copy with a clear value proposition',
+                    'Service page content that sells your offer',
+                    'About page storytelling that builds trust',
+                    'Call-to-action optimization for higher conversions',
+                    'Compatible with WordPress, Webflow, Wix & more'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'Homepage Copy', label: 'Homepage', title: 'Homepage Copy', desc: 'A clear, compelling headline and value proposition that grabs attention immediately.' },
+                    { img: null, imgLabel: 'Service Page Writing', label: 'Services', title: 'Service Page Writing', desc: 'Persuasive service descriptions that explain what you do and why clients should choose you.' },
+                    { img: null, imgLabel: 'About Page Story', label: 'About', title: 'About Page Story', desc: 'Your story told in a way that builds instant trust and emotional connection.' },
+                    { img: null, imgLabel: 'Call-to-Action Copy', label: 'CTA', title: 'Call-to-Action Copy', desc: 'Strategic CTAs placed throughout your site to guide visitors toward taking action.' }
                 ]
             },
-            consulting: {
-                icon: '<i class="fas fa-lightbulb"></i>',
-                tag: 'Expert Guidance',
-                title: 'Consulting',
-                desc: 'Sometimes you need a sharp outside perspective. I offer direct, honest consulting to help you make better decisions on design, workflow, and your digital future.',
+            leadgen: {
+                icon: '<i class=\"fab fa-linkedin\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-table\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-book\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i>',
+                tag: 'Lead Generation & Research',
+                title: 'Lead Generation & Research',
+                desc: 'A full pipeline doesn\'t happen by accident. I research, identify, and organize your ideal prospects so you spend less time hunting and more time closing deals.',
                 features: [
-                    '1-on-1 strategy & discovery sessions',
-                    'Workflow & productivity audit',
-                    'Tool & platform recommendations',
-                    'AI automation integration advice',
-                    'Ongoing support & project mentorship'
+                    'Target audience research & ideal client profiling',
+                    'Prospect list building via LinkedIn Sales Navigator & Apollo.io',
+                    'Email & LinkedIn outreach message drafts',
+                    'Market & competitor research reports',
+                    'Organized & delivered via Google Sheets, Notion & ChatGPT'
+                ]
+            ,
+                slides: [
+                    { img: null, imgLabel: 'Ideal Client Profile', label: 'Research', title: 'Ideal Client Profile', desc: 'I define exactly who your best clients are by industry, role, and pain points.' },
+                    { img: null, imgLabel: 'Lead List Building', label: 'Prospecting', title: 'Lead List Building', desc: 'Verified contact lists sourced via LinkedIn Sales Navigator and Apollo.io.' },
+                    { img: null, imgLabel: 'Outreach Messages', label: 'Outreach', title: 'Outreach Messages', desc: 'Personalized email and LinkedIn messages written to start real conversations.' },
+                    { img: null, imgLabel: 'Lead Database', label: 'Delivery', title: 'Lead Database', desc: 'Clean, structured spreadsheets delivered in Google Sheets and ready to use.' }
+                ]
+            },
+            aiautomation: {
+                icon: '<i class=\"fas fa-robot\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-brain\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i><i class=\"fas fa-cogs\" style=\"width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);border-radius:6px;padding:4px;margin-right:4px\"></i>',
+                tag: 'AI Setup & Automation',
+                title: 'AI Setup & Automation',
+                desc: 'AI isn\'t the future — it\'s right now. I help businesses implement the right tools and automated workflows to cut costs, reduce manual work, and operate faster than ever before.',
+                features: [
+                    'Chatbot setup for customer support or sales',
+                    'AI tools onboarding & team training',
+                    'Workflow automation setup via Make (Integromat)',
+                    'Prompt creation & optimization for teams',
+                    'Powered by ChatGPT, Claude, Gemini AI & Notion AI'
                 ]
             }
         };
+
+        // ─── Service Modal Inner Carousel ───
+        let svcModalCurrentSlide = 0;
+        let svcModalSlides = [];
+
+        function buildSvcModalSlides(slides) {
+            const track = document.getElementById('svcModalTrack');
+            track.innerHTML = '';
+            svcModalSlides = slides;
+            svcModalCurrentSlide = 0;
+
+            slides.forEach((slide, i) => {
+                const el = document.createElement('div');
+                el.className = 'svc-modal-slide';
+                el.innerHTML = `
+                    <div class="svc-modal-slide-img">
+                        ${slide.img
+                            ? `<img src="${slide.img}" alt="${slide.imgLabel || ''}">`
+                            : `<div class="svc-modal-placeholder">
+                                <i class="fas fa-image"></i>
+                                <span>Add your image here</span>
+                               </div>`
+                        }
+                        <span class="svc-modal-slide-badge">${i + 1} / ${slides.length}</span>
+                    </div>
+                    <div class="svc-modal-slide-body">
+                        <div class="svc-modal-slide-label">${slide.label || ''}</div>
+                        <div class="svc-modal-slide-title">${slide.title || ''}</div>
+                        <div class="svc-modal-slide-desc">${slide.desc || ''}</div>
+                    </div>`;
+                track.appendChild(el);
+            });
+
+            updateSvcModalSlide();
+        }
+
+        function updateSvcModalSlide() {
+            const track = document.getElementById('svcModalTrack');
+            track.style.transform = `translateX(-${svcModalCurrentSlide * 100}%)`;
+            const counter = document.getElementById('svcModalCounter');
+            if (counter) counter.textContent = `${svcModalCurrentSlide + 1} / ${svcModalSlides.length}`;
+        }
+
+        function moveSvcModalSlide(dir) {
+            svcModalCurrentSlide = Math.max(0, Math.min(svcModalCurrentSlide + dir, svcModalSlides.length - 1));
+            updateSvcModalSlide();
+        }
 
         function openServiceModal(key) {
             const data = serviceData[key];
@@ -2657,6 +2993,11 @@
             featureList.innerHTML = data.features
                 .map(f => `<li>${f}</li>`)
                 .join('');
+
+            // Build inner carousel
+            if (data.slides && data.slides.length) {
+                buildSvcModalSlides(data.slides);
+            }
 
             document.getElementById('serviceModalOverlay').classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -2775,137 +3116,86 @@
             init();
         })();
 
-        // ─── Service Carousel — True Infinite Loop ───
+        // ─── Service Tab + Carousel ───
         (function () {
             const track    = document.getElementById('servicesTrack');
+            const outer    = document.querySelector('.services-carousel-track-outer');
             const prevBtn  = document.getElementById('svcPrev');
             const nextBtn  = document.getElementById('svcNext');
             const dotsWrap = document.getElementById('svcDots');
-
-            const cardsPerView = () => window.innerWidth <= 768 ? 1 : 3;
-            const GAP = 28.8; // 1.8rem in px
-
-            let current    = 0; // logical page index (0 to totalPages-1)
+            const items    = Array.from(track.children);
+            const total    = items.length;
+            const perView  = () => window.innerWidth <= 768 ? 1 : 3;
+            const GAP      = 25.6;
+            let current    = 0;
             let dots       = [];
-            let isAnimating = false;
-            let realCards  = 0; // count of original cards
+            let tabs       = [];
 
-            function totalPages() {
-                return Math.ceil(realCards / cardsPerView());
-            }
+            const labels = [
+                'Virtual Assistant', 'Social Media', 'Video Editing',
+                'AI Setup', 'Website Content', 'Lead Generation'
+            ];
 
-            // ── Clone cards for seamless infinite scroll ──
-            function buildClones() {
-                // Remove old clones if reinitialising
-                track.querySelectorAll('.svc-clone').forEach(c => c.remove());
-
-                realCards = track.children.length;
-                const perView = cardsPerView();
-
-                // Clone enough cards to fill one full view on each side
-                const cloneCount = perView;
-
-                // Prepend clones of last N cards
-                const allCards = Array.from(track.children);
-                for (let i = allCards.length - 1; i >= allCards.length - cloneCount; i--) {
-                    const clone = allCards[i].cloneNode(true);
-                    clone.classList.add('svc-clone');
-                    clone.style.pointerEvents = 'none'; // clones aren't clickable
-                    track.prepend(clone);
-                }
-
-                // Append clones of first N cards
-                for (let i = 0; i < cloneCount; i++) {
-                    const clone = allCards[i].cloneNode(true);
-                    clone.classList.add('svc-clone');
-                    clone.style.pointerEvents = 'none';
-                    track.append(clone);
-                }
-            }
+            // Build tab row
+            const tabRow = document.createElement('div');
+            tabRow.className = 'svc-tabs';
+            labels.forEach((label, i) => {
+                const tab = document.createElement('button');
+                tab.className = 'svc-tab' + (i === 0 ? ' active' : '');
+                tab.textContent = label;
+                tab.addEventListener('click', () => slideTo(i));
+                tabRow.appendChild(tab);
+            });
+            const wrapper = document.querySelector('.services-carousel-wrapper');
+            wrapper.insertBefore(tabRow, wrapper.firstChild);
+            tabs = Array.from(tabRow.children);
 
             function cardWidth() {
-                return track.children[0].offsetWidth + GAP;
+                return items[0].offsetWidth + GAP;
             }
 
-            // ── Jump silently to a position (no transition) ──
-            function jumpTo(index) {
-                const perView  = cardsPerView();
-                const offset   = (index + perView) * cardWidth(); // +perView to skip prepended clones
-                track.style.transition = 'none';
-                track.style.transform  = `translateX(-${offset}px)`;
+            function maxPage() {
+                return Math.max(0, total - perView());
             }
 
-            // ── Animate to a position ──
             function slideTo(index) {
-                const perView  = cardsPerView();
-                const offset   = (index + perView) * cardWidth();
-                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                track.style.transform  = `translateX(-${offset}px)`;
+                current = Math.max(0, Math.min(index, total - 1));
+                // Slide track
+                const page   = Math.min(current, maxPage());
+                const offset = page * cardWidth();
+                track.style.transform = `translateX(-${offset}px)`;
+                // Update tabs
+                tabs.forEach((t, i) => t.classList.toggle('active', i === current));
+                // Update dots
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+                // Update nav buttons
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === total - 1;
             }
 
-            function updateDots() {
-                // Wrap logical current into valid dot range
-                const pages       = totalPages();
-                const dotIndex    = ((current % pages) + pages) % pages;
-                dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
-            }
-
+            // Build dots
             function buildDots() {
                 dotsWrap.innerHTML = '';
                 dots = [];
-                const pages = totalPages();
-                for (let i = 0; i < pages; i++) {
+                for (let i = 0; i < total; i++) {
                     const d = document.createElement('button');
-                    d.classList.add('svc-dot');
-                    if (i === 0) d.classList.add('active');
-                    d.addEventListener('click', () => {
-                        if (isAnimating) return;
-                        current = i;
-                        isAnimating = true;
-                        slideTo(current);
-                        updateDots();
-                        setTimeout(() => { isAnimating = false; }, 520);
-                    });
+                    d.className = 'svc-dot' + (i === 0 ? ' active' : '');
+                    d.addEventListener('click', () => slideTo(i));
                     dotsWrap.appendChild(d);
                     dots.push(d);
                 }
             }
 
-            // ── After transition ends, silently reset if on a clone ──
-            track.addEventListener('transitionend', () => {
-                const pages = totalPages();
-                if (current >= pages) {
-                    current = current - pages;
-                    jumpTo(current);
-                } else if (current < 0) {
-                    current = current + pages;
-                    jumpTo(current);
-                }
-                updateDots();
-                isAnimating = false;
-            });
-
             window.moveServiceCarousel = function (dir) {
-                if (isAnimating) return;
-                isAnimating = true;
-                current += dir;
-                slideTo(current);
-                updateDots();
-                // isAnimating reset handled by transitionend
+                slideTo(current + dir);
             };
 
             function init() {
-                buildClones();
-                current = 0;
                 buildDots();
-                jumpTo(current);
-                updateDots();
-                prevBtn.disabled = false;
-                nextBtn.disabled = false;
-    
+                slideTo(0);
             }
 
-            window.addEventListener('resize', init);
+            window.addEventListener('resize', () => slideTo(current));
             document.addEventListener('DOMContentLoaded', init);
             init();
         })();
@@ -3262,12 +3552,11 @@
             // Arrow keys navigate modal slides when open
             const overlay = document.getElementById('portfolioModalOverlay');
             if (overlay && overlay.classList.contains('open')) {
-                if (e.key === 'ArrowLeft')  movePModalSlide(-1);
                 if (e.key === 'ArrowRight') movePModalSlide(1);
+                if (e.key === 'ArrowLeft')  movePModalSlide(-1);
             }
         });
 
     </script>
-
 </body>
 </html>
