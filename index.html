@@ -6,8 +6,8 @@
     <title>M.Deleon - Website Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="icon" type="image/png" href="images/logo_mdl.png">
-    <link rel="shortcut icon" type="image/png" href="images/logo_mdl.png">
+    <link rel="icon" type="image/png" href="images/logo_favicon.png">
+    <link rel="shortcut icon" type="image/png" href="images/logo_favicon.png">
     <style>
         :root {
             --bg-dark: #0a0a0a;
@@ -2991,7 +2991,7 @@
         <div class="nav-container">
             <!-- Logo -->
             <a href="#home" class="logo">
-                <img src="images/logo_mdl.png" alt="MDL Logo" class="nav-logo-img">
+                <img src="images/logo_nav.png" alt="MDL Logo" class="nav-logo-img">
             </a>
 
             <!-- Center links -->
@@ -3545,7 +3545,7 @@
                                     Book a Free Call
                                 </a>
                                 <a href="https://calendly.com/deleonmike84" target="_blank" rel="noopener noreferrer" class="calendly-oval" title="Open Calendly">
-                                    <img loading="lazy" src="https://cdn.simpleicons.org/calendly/ffffff" alt="Calendly" style="width:18px;height:18px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.90;">
+                                    <i class="fas fa-calendar-check" style="font-size:16px;color:#ffffff;opacity:0.90;"></i>
                                 </a>
                             </div>
                         </div>
@@ -3564,7 +3564,7 @@
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank" class="email-oval-text">
-                        deleonmike84@gmail.com
+                        <span class="__cf_email__" data-cfemail="3155545d545e5f5c585a54090571565c50585d1f525e5c">[email&#160;protected]</span>
                     </a>
                     <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email">
                         <i class="fas fa-link" id="copyIcon"></i>
@@ -3602,7 +3602,7 @@
     </section>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 
         // ─── Navigation ───
@@ -4473,7 +4473,6 @@
                 closeServiceModal();
                 closePortfolioModal();
             }
-            // Arrow keys navigate modal slides when open
             const overlay = document.getElementById('portfolioModalOverlay');
             if (overlay && overlay.classList.contains('open')) {
                 if (e.key === 'ArrowRight') movePModalSlide(1);
@@ -4485,11 +4484,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 M.Deleon-Freelance. All rights reserved. Crafted with Passion and Precision.</p>
+        <p>&copy; 2026 M.DeLeon Freelance &mdash; All rights reserved. Crafted with Passion and Precision.</p>
     </footer>
 
-    <script>
-
-    </script>
 </body>
 </html>
