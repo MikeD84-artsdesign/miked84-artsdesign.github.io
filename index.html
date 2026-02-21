@@ -1217,7 +1217,6 @@
         .service-modal-overlay.open .service-modal {
             transform: translateY(0) scale(1);
             opacity: 1;
-            animation: floatModal 4s ease-in-out infinite;
         }
 
         @keyframes floatModal {
@@ -3057,6 +3056,154 @@
                 gap: 20px;
             }
         }
+
+        /* ─── Mobile fixes: new elements ─── */
+        @media (max-width: 768px) {
+
+            /* Hero trust row — wrap and center */
+            .hero-trust-row {
+                flex-direction: column;
+                gap: 0.6rem;
+                align-items: flex-start;
+                margin-top: 1.2rem;
+            }
+
+            .hero-trust-row span {
+                font-size: 0.78rem;
+            }
+
+            /* Hero niche line */
+            .hero-niche {
+                text-align: left;
+                font-size: 0.80rem;
+            }
+
+            /* About CTA button — full width centered */
+            .about-cta-wrap {
+                justify-content: center;
+            }
+
+            .about-cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* About stats — 2 columns on mobile */
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Service modal slide — stack to column */
+            .svc-modal-slide {
+                flex-direction: column;
+                min-height: unset;
+            }
+
+            .svc-modal-slide-img {
+                flex: 0 0 180px;
+                width: 100%;
+                height: 180px;
+            }
+
+            .svc-modal-slide-body {
+                border-left: none;
+                border-top: 1px solid rgba(209,178,128,0.1);
+                padding: 1.2rem;
+            }
+
+            /* Portfolio modal slide — stack to column */
+            .pmodal-slide {
+                flex-direction: column;
+            }
+
+            .pmodal-slide-img {
+                flex: 0 0 180px;
+                width: 100%;
+                height: 180px;
+            }
+
+            .pmodal-slide-body {
+                border-left: none;
+                border-top: 1px solid rgba(209,178,128,0.1);
+                padding: 1.2rem;
+            }
+
+            /* Portfolio modal — full screen on mobile */
+            .portfolio-modal {
+                max-height: 92vh;
+                overflow-y: auto;
+                margin: 0;
+                border-radius: 16px;
+            }
+
+            /* Service modal — full screen on mobile */
+            .service-modal {
+                max-height: 92vh;
+                overflow-y: auto;
+                padding: 1.4rem 1.2rem 1.6rem;
+            }
+        }
+
+        /* ─── Small phone breakpoint (480px and below) ─── */
+        @media (max-width: 480px) {
+
+            /* Hero title smaller on tiny screens */
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            /* Profile frame smaller */
+            .profile-frame {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* Profile name smaller */
+            .profile-name {
+                font-size: 1.4rem;
+            }
+
+            /* CTA buttons stack on tiny screens */
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                text-align: center;
+                width: 100%;
+            }
+
+            /* About heading smaller */
+            .about-heading {
+                font-size: 1.8rem;
+            }
+
+            /* Section titles smaller */
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Contact card padding tighter */
+            .contact-top-card {
+                padding: 1.6rem 1.2rem;
+            }
+
+            /* Book call button full width */
+            .book-call-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Social icons smaller */
+            .social-link i {
+                font-size: 2.2rem;
+            }
+
+            .social-link {
+                min-width: 70px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3648,7 +3795,7 @@
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank" class="email-oval-text">
-                        <span class="__cf_email__" data-cfemail="3155545d545e5f5c585a54090571565c50585d1f525e5c"><span class="__cf_email__" data-cfemail="6105040d040e0f0c080a04595521060c00080d4f020e0c">deleonmike84@gmail.com</span></span>
+                        deleonmike84@gmail.com
                     </a>
                     <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email">
                         <i class="fas fa-link" id="copyIcon"></i>
@@ -3686,7 +3833,7 @@
     </section>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 
 
         // ─── Navigation ───
