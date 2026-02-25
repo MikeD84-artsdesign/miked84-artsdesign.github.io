@@ -1422,7 +1422,7 @@
         /* ─── Portfolio / Work Section ─── */
         #work {
             min-height: 100vh;
-            padding: 8rem 0;
+            padding: 6rem 0 5rem;
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -1433,6 +1433,7 @@
             right: 50%;
             margin-left: -50vw;
             margin-right: -50vw;
+            scroll-margin-top: 0px;
         }
 
         #work::before {
@@ -2406,8 +2407,8 @@
 
         /* ─── Testimonials Section ─── */
         .testimonials-section {
-            min-height: 60vh;
-            padding: 8rem 0;
+            min-height: unset;
+            padding: 5rem 0 4rem;
             position: relative;
             overflow: hidden;
             width: 100vw;
@@ -2416,6 +2417,8 @@
             margin-left: -50vw;
             margin-right: -50vw;
             text-align: center;
+            scroll-margin-top: 72px;
+            border-bottom: 1px solid rgba(255, 245, 225, 0.10);
         }
 
         .testimonials-section::before {
@@ -2464,21 +2467,44 @@
         }
 
         .testi-track {
+            position: relative;
+            height: 340px; /* fixed — never changes regardless of slide */
             overflow: hidden;
         }
 
         .testi-slide {
-            display: none;
-            animation: testiFadeIn 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.45s ease, transform 0.45s ease;
+            transform: translateY(14px);
         }
 
         .testi-slide.active {
-            display: block;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
         @keyframes testiFadeIn {
             from { opacity: 0; transform: translateY(12px); }
             to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .testi-track {
+                height: 420px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testi-track {
+                height: 480px;
+            }
         }
 
         /* Card */
@@ -2631,8 +2657,8 @@
 
         /* ─── Contact Section ─── */
         .contact-section {
-            min-height: 100vh;
-            padding: 8rem 0;
+            min-height: unset;
+            padding: 5rem 0 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -2641,6 +2667,7 @@
             right: 50%;
             margin-left: -50vw;
             margin-right: -50vw;
+            scroll-margin-top: 0px;
         }
 
         /* Blurred background layer */
@@ -2648,7 +2675,7 @@
             content: '';
             position: absolute;
             inset: -20px;
-            background-image: url("images/cafe_night.png");
+            background-image: url("images/contact_desk.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -3233,7 +3260,8 @@
             </a>
 
             <!-- Hamburger -->
-            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()">
+            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()"
+                    aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMobile">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -3242,7 +3270,7 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="nav-mobile" id="navMobile">
+    <div class="nav-mobile" id="navMobile" aria-hidden="true">
         <a href="#home"         class="nav-link" onclick="closeMobileNav()">Home</a>
         <a href="#about"        class="nav-link" onclick="closeMobileNav()">About</a>
         <a href="#services"     class="nav-link" onclick="closeMobileNav()">Services</a>
@@ -3256,9 +3284,9 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="video-background">
+        <div class="video-background" aria-hidden="true">
             <div class="video-overlay"></div>
-            <video autoplay muted loop playsinline id="heroVideo">
+            <video autoplay muted loop playsinline id="heroVideo" aria-hidden="true">
                 <source src="images/Coffee.mp4" type="video/mp4">
             </video>
         </div>
@@ -3375,7 +3403,7 @@
 
             <div class="services-carousel-wrapper">
                 <!-- Prev Button -->
-                <button class="svc-carousel-btn prev" id="svcPrev" onclick="moveServiceCarousel(-1)">
+                <button class="svc-carousel-btn prev" id="svcPrev" onclick="moveServiceCarousel(-1)" aria-label="Previous service">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
@@ -3383,7 +3411,7 @@
                 <div class="services-carousel-track-outer">
                     <div class="services-grid" id="servicesTrack">
 
-                        <div class="service-card" onclick="openServiceModal('va')">
+                        <div class="service-card" onclick="openServiceModal('va')" role="button" tabindex="0" aria-label="View Virtual Assistant service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('va')">
                             <div class="service-icon">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/google/ffffff" alt="Google">
                                 <i class="fas fa-book" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
@@ -3394,7 +3422,7 @@
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('socialmedia')">
+                        <div class="service-card" onclick="openServiceModal('socialmedia')" role="button" tabindex="0" aria-label="View Social Media Management service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('socialmedia')">
                             <div class="service-icon">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/meta/ffffff" alt="Meta">
                                 <i class="fas fa-paint-brush" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
@@ -3405,7 +3433,7 @@
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('videoediting')">
+                        <div class="service-card" onclick="openServiceModal('videoediting')" role="button" tabindex="0" aria-label="View Short-Form Video Editing service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('videoediting')">
                             <div class="service-icon">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram">
@@ -3416,7 +3444,7 @@
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('aisetup')">
+                        <div class="service-card" onclick="openServiceModal('aisetup')" role="button" tabindex="0" aria-label="View AI Setup and Automation service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('aisetup')">
                             <div class="service-icon">
                                 <i class="fas fa-robot" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
                                 <i class="fas fa-brain" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
@@ -3427,7 +3455,7 @@
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('websitecontent')">
+                        <div class="service-card" onclick="openServiceModal('websitecontent')" role="button" tabindex="0" aria-label="View Website and Landing Page Content service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('websitecontent')">
                             <div class="service-icon">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/wordpress/ffffff" alt="WordPress">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/webflow/ffffff" alt="Webflow">
@@ -3438,7 +3466,7 @@
                             <span class="click-hint">Tap to explore →</span>
                         </div>
 
-                        <div class="service-card" onclick="openServiceModal('leadgen')">
+                        <div class="service-card" onclick="openServiceModal('leadgen')" role="button" tabindex="0" aria-label="View Lead Generation and Research service details" onkeydown="if(event.key==='Enter'||event.key===' ')openServiceModal('leadgen')">
                             <div class="service-icon">
                                 <i class="fab fa-linkedin" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
                                 <i class="fas fa-table" style="color:#fff;font-size:1.2rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px;"></i>
@@ -3454,7 +3482,7 @@
                 </div>
 
                 <!-- Next Button -->
-                <button class="svc-carousel-btn next" id="svcNext" onclick="moveServiceCarousel(1)">
+                <button class="svc-carousel-btn next" id="svcNext" onclick="moveServiceCarousel(1)" aria-label="Next service">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -3466,7 +3494,7 @@
     </section>
 
     <!-- ── Floating Service Modal ── -->
-    <div class="service-modal-overlay" id="serviceModalOverlay" onclick="handleOverlayClick(event)">
+    <div class="service-modal-overlay" id="serviceModalOverlay" onclick="handleOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="service-modal" id="serviceModal">
             <!-- decorative sparks -->
             <div class="modal-spark"></div>
@@ -3474,7 +3502,7 @@
             <div class="modal-spark"></div>
             <div class="modal-spark"></div>
 
-            <button class="modal-close-btn" onclick="closeServiceModal()">
+            <button class="modal-close-btn" onclick="closeServiceModal()" aria-label="Close service modal">
                 <i class="fas fa-times"></i>
             </button>
 
@@ -3486,8 +3514,8 @@
             <!-- Inner Image Carousel -->
             <div class="svc-modal-carousel" id="svcModalCarousel">
                 <div class="svc-modal-track" id="svcModalTrack"></div>
-                <button class="svc-modal-nav prev" id="svcModalPrev" onclick="moveSvcModalSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="svc-modal-nav next" id="svcModalNext" onclick="moveSvcModalSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="svc-modal-nav prev" id="svcModalPrev" onclick="moveSvcModalSlide(-1)" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="svc-modal-nav next" id="svcModalNext" onclick="moveSvcModalSlide(1)" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="svc-modal-counter" id="svcModalCounter">1 / 4</div>
 
@@ -3512,14 +3540,14 @@
             <div class="portfolio-carousel-wrapper">
 
                 <!-- Prev Button -->
-                <button class="portfolio-carousel-btn prev" id="portPrev" onclick="movePortfolioCarousel(-1)">
+                <button class="portfolio-carousel-btn prev" id="portPrev" onclick="movePortfolioCarousel(-1)" aria-label="Previous project">
                     <i class="fas fa-chevron-left"></i>
                 </button>
 
                 <!-- Track -->
                 <div class="portfolio-carousel-track" id="portfolioTrack">
 
-                    <div class="portfolio-item" data-key="va" onclick="openPortfolioModal('va')">
+                    <div class="portfolio-item" data-key="va" onclick="openPortfolioModal('va')" role="button" tabindex="0" aria-label="View Virtual Assistant project details" onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('va')">
                         <div class="portfolio-image">
                             <div class="portfolio-icon-card">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/google/ffffff" style="width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;" alt="Google">
@@ -3533,7 +3561,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" data-key="socialmedia" onclick="openPortfolioModal('socialmedia')">
+                    <div class="portfolio-item" data-key="socialmedia" onclick="openPortfolioModal('socialmedia')" role="button" tabindex="0" aria-label="View Social Media project details" onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('socialmedia')">
                         <div class="portfolio-image">
                             <div class="portfolio-icon-card">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/meta/ffffff" style="width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;" alt="Meta">
@@ -3549,6 +3577,8 @@
 
                     <div class="portfolio-item" data-key="videoediting"
                          onclick="openPortfolioModal('videoediting')"
+                         role="button" tabindex="0" aria-label="View Video Editing project details"
+                         onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('videoediting')"
                          onmouseenter="this.querySelector('video') && this.querySelector('video').play()"
                          onmouseleave="this.querySelector('video') && this.querySelector('video').pause()">
                         <div class="portfolio-image">
@@ -3569,7 +3599,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" data-key="aisetup" onclick="openPortfolioModal('aisetup')">
+                    <div class="portfolio-item" data-key="aisetup" onclick="openPortfolioModal('aisetup')" role="button" tabindex="0" aria-label="View AI Automation project details" onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('aisetup')">
                         <div class="portfolio-image">
                             <div class="portfolio-icon-card">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/make/ffffff" style="width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;" alt="Make">
@@ -3583,7 +3613,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" data-key="websitecontent" onclick="openPortfolioModal('websitecontent')">
+                    <div class="portfolio-item" data-key="websitecontent" onclick="openPortfolioModal('websitecontent')" role="button" tabindex="0" aria-label="View Website Content project details" onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('websitecontent')">
                         <div class="portfolio-image">
                             <div class="portfolio-icon-card">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/wordpress/ffffff" style="width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;" alt="WordPress">
@@ -3597,7 +3627,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-item" data-key="leadgen" onclick="openPortfolioModal('leadgen')">
+                    <div class="portfolio-item" data-key="leadgen" onclick="openPortfolioModal('leadgen')" role="button" tabindex="0" aria-label="View Lead Generation project details" onkeydown="if(event.key==='Enter'||event.key===' ')openPortfolioModal('leadgen')">
                         <div class="portfolio-image">
                             <div class="portfolio-icon-card">
                                 <img loading="lazy" src="https://cdn.simpleicons.org/hubspot/ffffff" style="width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;" alt="HubSpot">
@@ -3614,7 +3644,7 @@
                 </div>
 
                 <!-- Next Button -->
-                <button class="portfolio-carousel-btn next" id="portNext" onclick="movePortfolioCarousel(1)">
+                <button class="portfolio-carousel-btn next" id="portNext" onclick="movePortfolioCarousel(1)" aria-label="Next project">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -3627,7 +3657,7 @@
     </section>
 
     <!-- ── Portfolio Modal with Inner Carousel ── -->
-    <div class="portfolio-modal-overlay" id="portfolioModalOverlay" onclick="handlePortfolioOverlayClick(event)">
+    <div class="portfolio-modal-overlay" id="portfolioModalOverlay" onclick="handlePortfolioOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="pModalTitle" aria-hidden="true">
         <div class="portfolio-modal" id="portfolioModal">
 
             <!-- Header -->
@@ -3639,7 +3669,7 @@
                         <div class="portfolio-modal-title" id="pModalTitle"></div>
                     </div>
                 </div>
-                <button class="portfolio-modal-close" onclick="closePortfolioModal()">
+                <button class="portfolio-modal-close" onclick="closePortfolioModal()" aria-label="Close portfolio modal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -3649,10 +3679,10 @@
                 <div class="pmodal-track" id="pModalTrack"></div>
 
                 <!-- Nav arrows (sit on top of image) -->
-                <button class="pmodal-nav prev" id="pModalPrev" onclick="movePModalSlide(-1)">
+                <button class="pmodal-nav prev" id="pModalPrev" onclick="movePModalSlide(-1)" aria-label="Previous slide">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="pmodal-nav next" id="pModalNext" onclick="movePModalSlide(1)">
+                <button class="pmodal-nav next" id="pModalNext" onclick="movePModalSlide(1)" aria-label="Next slide">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -3795,9 +3825,9 @@
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank" class="email-oval-text">
-                        deleonmike84@gmail.com
+                        <span class="__cf_email__" data-cfemail="8de9e8e1e8e2e3e0e4e6e8b5b9cdeae0ece4e1a3eee2e0">[email&#160;protected]</span>
                     </a>
-                    <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email">
+                    <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email" aria-label="Copy email address">
                         <i class="fas fa-link" id="copyIcon"></i>
                     </button>
                 </div>
@@ -3833,7 +3863,7 @@
     </section>
 
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 
         // ─── Navigation ───
@@ -3862,13 +3892,21 @@
 
         // Hamburger
         function toggleMobileNav() {
-            document.getElementById('navMobile').classList.toggle('open');
-            document.getElementById('navHamburger').classList.toggle('open');
+            const mobile = document.getElementById('navMobile');
+            const hamburger = document.getElementById('navHamburger');
+            const isOpen = mobile.classList.toggle('open');
+            hamburger.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobile.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
         }
 
         function closeMobileNav() {
-            document.getElementById('navMobile').classList.remove('open');
-            document.getElementById('navHamburger').classList.remove('open');
+            const mobile = document.getElementById('navMobile');
+            const hamburger = document.getElementById('navHamburger');
+            mobile.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobile.setAttribute('aria-hidden', 'true');
         }
 
         // ─── Testimonials Slider ───
@@ -4213,17 +4251,25 @@
                 .map(f => `<li>${f}</li>`)
                 .join('');
 
-            // Build inner carousel
             if (data.slides && data.slides.length) {
                 buildSvcModalSlides(data.slides);
             }
 
-            document.getElementById('serviceModalOverlay').classList.add('open');
+            const overlay = document.getElementById('serviceModalOverlay');
+            overlay.classList.add('open');
+            overlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                const focusable = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusable.length) focusable[0].focus();
+            }, 50);
         }
 
         function closeServiceModal() {
-            document.getElementById('serviceModalOverlay').classList.remove('open');
+            const overlay = document.getElementById('serviceModalOverlay');
+            overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
@@ -4684,12 +4730,21 @@
 
             buildPModalSlides(data.slides);
 
-            document.getElementById('portfolioModalOverlay').classList.add('open');
+            const overlay = document.getElementById('portfolioModalOverlay');
+            overlay.classList.add('open');
+            overlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                const focusable = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusable.length) focusable[0].focus();
+            }, 50);
         }
 
         function closePortfolioModal() {
-            document.getElementById('portfolioModalOverlay').classList.remove('open');
+            const overlay = document.getElementById('portfolioModalOverlay');
+            overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
@@ -4716,9 +4771,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2025 Michael de Leon &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Built with passion.</p>
-        </div>
+        <p>&copy; 2025 Michael de Leon · All Rights Reserved · Built with passion &amp; purpose.</p>
     </footer>
 
 </body>
