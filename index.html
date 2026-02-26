@@ -3820,12 +3820,12 @@
                 <!-- Email -->
                 <div class="contact-actions">
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
-                       target="_blank" class="email-icon-circle" title="Open in Gmail">
+                       target="_blank" class="email-icon-circle" title="Open in Gmail" aria-label="Open Gmail to email Michael">
                         <i class="fas fa-envelope"></i>
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank" class="email-oval-text">
-                        <span class="__cf_email__" data-cfemail="8de9e8e1e8e2e3e0e4e6e8b5b9cdeae0ece4e1a3eee2e0">[email&#160;protected]</span>
+                        deleonmike84@gmail.com
                     </a>
                     <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email" aria-label="Copy email address">
                         <i class="fas fa-link" id="copyIcon"></i>
@@ -3955,13 +3955,14 @@
                     ic.classList.remove('fa-link');
                     ic.classList.add('fa-check');
                 });
-                btnText.innerText = "Copied";
 
                 setTimeout(() => {
-                    btn.classList.remove('copied');
-                    icon.classList.remove('fa-check');
-                    icon.classList.add('fa-copy');
-                    btnText.innerText = "Copy";
+                    [btn, btn2].forEach(b => b && b.classList.remove('copied'));
+                    [icon, icon2].forEach(ic => {
+                        if (!ic) return;
+                        ic.classList.remove('fa-check');
+                        ic.classList.add('fa-link');
+                    });
                 }, 2000);
             });
         }
