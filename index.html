@@ -1109,11 +1109,13 @@
             display: flex;
             flex-direction: row;
             align-items: stretch;
-            min-height: 260px;
+            min-height: 180px;
+            max-height: 200px;
         }
         .svc-modal-slide-img {
-            flex: 0 0 62%;
-            width: 62%;
+            flex: 0 0 40%;
+            width: 40%;
+            max-height: 200px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #1a1412, #2a1f1a);
@@ -1121,7 +1123,7 @@
             align-items: center;
             justify-content: center;
         }
-        .svc-modal-slide-img img { width:100%; height:100%; object-fit:cover; display:block; }
+        .svc-modal-slide-img img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
         .svc-modal-placeholder {
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             gap:0.7rem; width:100%; height:100%;
@@ -1884,7 +1886,7 @@
         /* Slide image area */
         .pmodal-slide-img {
             width: 100%;
-            height: 260px;
+            height: 180px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #1a1412, #2a1f1a);
@@ -1897,6 +1899,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
             transition: transform 0.5s ease;
         }
 
@@ -3278,7 +3281,7 @@
         <a href="#testimonials" class="nav-link" onclick="closeMobileNav()">Reviews</a>
         <a href="#contact"      class="nav-link" onclick="closeMobileNav()">Contact</a>
         <a href="https://calendly.com/deleonmike84" target="_blank" class="nav-cta-mobile">
-            📅 Book a Free Call
+            <i class="fas fa-calendar-check"></i> Book a Free Call
         </a>
     </div>
 
@@ -4051,10 +4054,10 @@
                 ]
             ,
                 slides: [
-                    { img: null, imgLabel: 'What I Do', label: 'Overview', title: 'What I Do', desc: 'From inbox management to scheduling, I keep your operations running smoothly every day.' },
-                    { img: null, imgLabel: 'Inbox Zero Strategy', label: 'Email', title: 'Inbox Zero Strategy', desc: 'I sort, respond, and organize your inbox so nothing important ever slips through.' },
-                    { img: null, imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar Coordination', desc: 'Meeting bookings, reminders, and time-blocking handled so your days flow better.' },
-                    { img: null, imgLabel: 'Weekly Updates', label: 'Reports', title: 'Weekly Updates', desc: 'Clear, concise summaries of tasks done, pending, and upcoming in your preferred format.' }
+                    { img: 'images/VAService3.jpeg', imgLabel: 'What I Do', label: 'Overview', title: 'What I Do', desc: 'From inbox management to scheduling, I keep your operations running smoothly every day.' },
+                    { img: 'images/VAService4.png', imgLabel: 'Inbox Zero Strategy', label: 'Email', title: 'Inbox Zero Strategy', desc: 'I sort, respond, and organize your inbox so nothing important ever slips through.' },
+                    { img: 'images/VAService2.webp', imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar Coordination', desc: 'Meeting bookings, reminders, and time-blocking handled so your days flow better.' },
+                    { img: 'images/VAService1.webp', imgLabel: 'Weekly Updates', label: 'Reports', title: 'Weekly Updates', desc: 'Clear, concise summaries of tasks done, pending, and upcoming in your preferred format.' }
                 ]
             },
             socialmedia: {
@@ -4530,16 +4533,16 @@
                 tag: 'Virtual Assistant',
                 title: 'Full-Scale Executive VA Support',
                 slides: [
-                    { img: null, imgLabel: 'Overview', label: 'Overview', title: 'The Challenge',
+                    { img: 'images/VAService3.jpeg', imgLabel: 'Overview', label: 'Overview', title: 'The Challenge',
                       desc: 'A busy entrepreneur was losing 10+ hours weekly to inbox chaos, missed meetings, and disorganized tasks — no time left to focus on actual growth.',
                       tools: ['Google Workspace', 'Notion', 'Slack'] },
-                    { img: null, imgLabel: 'Inbox Management', label: 'Email', title: 'Inbox Zero System',
+                    { img: 'images/VAService4.png', imgLabel: 'Inbox Management', label: 'Email', title: 'Inbox Zero System',
                       desc: 'Set up a full inbox management system — sorting, labeling, responding to routine messages, and flagging only what truly needed the client\'s attention.',
                       tools: ['Gmail', 'Filters & Labels', 'Email Templates'] },
-                    { img: null, imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar & Meeting Management',
+                    { img: 'images/VAService2.webp', imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar & Meeting Management',
                       desc: 'Handled all scheduling — booking calls, setting reminders, blocking focus time, and sending meeting agendas so every session was prepared for.',
                       tools: ['Google Calendar', 'Calendly', 'Zoom'] },
-                    { img: null, imgLabel: 'Results', label: 'Results', title: '10+ Hours Saved Per Week',
+                    { img: 'images/VAService1.webp', imgLabel: 'Results', label: 'Results', title: '10+ Hours Saved Per Week',
                       desc: 'The client reclaimed over 10 hours every week — reinvesting that time directly into client work, strategy, and business development.',
                       tools: ['Notion Reports', 'Weekly Summaries', 'Task Tracking'] }
                 ]
