@@ -1879,23 +1879,24 @@
 
         .pmodal-slide {
             flex: 0 0 100%;
-            display: flex;
-            flex-direction: column;
+            display: block;
         }
 
-        /* Slide image area */
+        /* Slide immersive area — image fills, content floats */
         .pmodal-slide-img {
             width: 100%;
-            height: 180px;
+            height: 320px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #1a1412, #2a1f1a);
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
         }
 
-        .pmodal-slide-img img {
+        .pmodal-slide-img img,
+        .pmodal-slide-img video {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1903,17 +1904,33 @@
             transition: transform 0.5s ease;
         }
 
-        .pmodal-slide-img:hover img { transform: scale(1.04); }
+        .pmodal-slide-img:hover img,
+        .pmodal-slide-img:hover video { transform: scale(1.03); }
 
-        /* Placeholder styling (remove once real images added) */
+        /* Gradient scrim for readability */
+        .pmodal-slide-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,8,5,0.0) 0%,
+                rgba(10,8,5,0.25) 40%,
+                rgba(10,8,5,0.80) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Placeholder styling */
         .pmodal-placeholder {
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 0.8rem;
-            width: 100%;
-            height: 100%;
             background: linear-gradient(135deg, rgba(45,28,10,0.9), rgba(27,20,12,0.95));
         }
 
@@ -1944,14 +1961,24 @@
             color: rgba(209,178,128,0.8);
             letter-spacing: 1px;
             backdrop-filter: blur(6px);
+            z-index: 10;
         }
 
-        /* Slide text content */
+        /* Floating glass content — clear glass, no blur */
         .pmodal-slide-body {
-            padding: 1.4rem 1.6rem 1.8rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            padding: 1.1rem 1.4rem 1.3rem;
+            background: rgba(8, 6, 4, 0.45);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-top: none;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.35rem;
         }
 
         .pmodal-slide-label {
@@ -1972,7 +1999,7 @@
 
         .pmodal-slide-desc {
             font-size: 0.93rem;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.88);
             line-height: 1.75;
             margin-top: 0.2rem;
         }
@@ -3828,7 +3855,7 @@
                     </a>
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deleonmike84@gmail.com&su=Project+Inquiry"
                        target="_blank" class="email-oval-text">
-                        deleonmike84@gmail.com
+                        <span class="__cf_email__" data-cfemail="385c5d545d57565551535d000c785f55595154165b5755">[email&#160;protected]</span>
                     </a>
                     <button class="copy-circle-btn" onclick="copyEmailAddress()" id="copyBtn" title="Copy email" aria-label="Copy email address">
                         <i class="fas fa-link" id="copyIcon"></i>
@@ -3866,7 +3893,7 @@
     </section>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 
         // ─── Navigation ───
@@ -3894,7 +3921,7 @@
         sections.forEach(s => sectionObserver.observe(s));
 
         // Hamburger
-        function toggleMobileNav() {
+        window.toggleMobileNav = function toggleMobileNav() {
             const mobile = document.getElementById('navMobile');
             const hamburger = document.getElementById('navHamburger');
             const isOpen = mobile.classList.toggle('open');
@@ -3903,7 +3930,7 @@
             mobile.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
         }
 
-        function closeMobileNav() {
+        window.closeMobileNav = function closeMobileNav() {
             const mobile = document.getElementById('navMobile');
             const hamburger = document.getElementById('navHamburger');
             mobile.classList.remove('open');
@@ -3925,8 +3952,8 @@
             testiDots[testiCurrent].classList.add('active');
         }
 
-        function moveTestiSlide(dir) { showTesti(testiCurrent + dir); }
-        function goToTesti(n) { showTesti(n); }
+        window.moveTestiSlide = function moveTestiSlide(dir) { showTesti(testiCurrent + dir); }
+        window.goToTesti = function goToTesti(n) { showTesti(n); }
 
         // Auto-advance every 5s
         setInterval(() => moveTestiSlide(1), 5000);
@@ -3944,7 +3971,7 @@
         })();
 
         // ─── Copy Email to Clipboard ───
-        function copyEmailAddress() {
+        window.copyEmailAddress = function copyEmailAddress() {
             const email = "deleonmike84@gmail.com";
             const btn   = document.getElementById('copyBtn');
             const btn2  = document.getElementById('copyBtn2');
@@ -4217,7 +4244,7 @@
             if (counter) counter.textContent = `${svcModalCurrentSlide + 1} / ${svcModalSlides.length}`;
         }
 
-        function moveSvcModalSlide(dir) {
+        window.moveSvcModalSlide = function moveSvcModalSlide(dir) {
             svcModalCurrentSlide = Math.max(0, Math.min(svcModalCurrentSlide + dir, svcModalSlides.length - 1));
             updateSvcModalSlide();
         }
@@ -4241,7 +4268,7 @@
             });
         });
 
-        function openServiceModal(key) {
+        window.openServiceModal = function openServiceModal(key) {
             const data = serviceData[key];
             if (!data) return;
 
@@ -4270,14 +4297,14 @@
             }, 50);
         }
 
-        function closeServiceModal() {
+        window.closeServiceModal = function closeServiceModal() {
             const overlay = document.getElementById('serviceModalOverlay');
             overlay.classList.remove('open');
             overlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
-        function handleOverlayClick(e) {
+        window.handleOverlayClick = function handleOverlayClick(e) {
             if (e.target === document.getElementById('serviceModalOverlay')) {
                 closeServiceModal();
             }
@@ -4533,16 +4560,16 @@
                 tag: 'Virtual Assistant',
                 title: 'Full-Scale Executive VA Support',
                 slides: [
-                    { img: 'images/VAService3.jpeg', imgLabel: 'Overview', label: 'Overview', title: 'The Challenge',
+                    { img: null, imgLabel: 'Overview', label: 'Overview', title: 'The Challenge',
                       desc: 'A busy entrepreneur was losing 10+ hours weekly to inbox chaos, missed meetings, and disorganized tasks — no time left to focus on actual growth.',
                       tools: ['Google Workspace', 'Notion', 'Slack'] },
-                    { img: 'images/VAService4.png', imgLabel: 'Inbox Management', label: 'Email', title: 'Inbox Zero System',
+                    { img: null, imgLabel: 'Inbox Management', label: 'Email', title: 'Inbox Zero System',
                       desc: 'Set up a full inbox management system — sorting, labeling, responding to routine messages, and flagging only what truly needed the client\'s attention.',
                       tools: ['Gmail', 'Filters & Labels', 'Email Templates'] },
-                    { img: 'images/VAService2.webp', imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar & Meeting Management',
+                    { img: null, imgLabel: 'Calendar Coordination', label: 'Scheduling', title: 'Calendar & Meeting Management',
                       desc: 'Handled all scheduling — booking calls, setting reminders, blocking focus time, and sending meeting agendas so every session was prepared for.',
                       tools: ['Google Calendar', 'Calendly', 'Zoom'] },
-                    { img: 'images/VAService1.webp', imgLabel: 'Results', label: 'Results', title: '10+ Hours Saved Per Week',
+                    { img: null, imgLabel: 'Results', label: 'Results', title: '10+ Hours Saved Per Week',
                       desc: 'The client reclaimed over 10 hours every week — reinvesting that time directly into client work, strategy, and business development.',
                       tools: ['Notion Reports', 'Weekly Summaries', 'Task Tracking'] }
                 ]
@@ -4658,21 +4685,36 @@
                 const slide = document.createElement('div');
                 slide.className = 'pmodal-slide';
 
-                // Image / video / placeholder
+                // Tool tags
+                const toolsHTML = s.tools
+                    ? s.tools.map(t => `<span class="portfolio-tool-tag">${t}</span>`).join('')
+                    : '';
+
+                // Build mediaHTML with body floating inside
                 let mediaHTML = '';
+                const bodyHTML = `
+                    <div class="pmodal-slide-body">
+                        <div class="pmodal-slide-label">${s.label}</div>
+                        <div class="pmodal-slide-title">${s.title}</div>
+                        <p class="pmodal-slide-desc">${s.desc}</p>
+                        ${toolsHTML ? `<div class="pmodal-slide-tools">${toolsHTML}</div>` : ''}
+                    </div>`;
+
                 if (s.isVideo && s.img) {
                     mediaHTML = `
                         <div class="pmodal-slide-img">
-                            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;">
+                            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;background:#0a0806;">
                                 <source src="${s.img}" type="video/mp4">
                             </video>
                             <span class="pmodal-slide-badge">${i + 1} / ${slides.length}</span>
+                            ${bodyHTML}
                         </div>`;
                 } else if (s.img) {
                     mediaHTML = `
                         <div class="pmodal-slide-img">
                             <img src="${s.img}" alt="${s.title}" loading="lazy">
                             <span class="pmodal-slide-badge">${i + 1} / ${slides.length}</span>
+                            ${bodyHTML}
                         </div>`;
                 } else {
                     mediaHTML = `
@@ -4682,22 +4724,11 @@
                                 <span>${s.imgLabel || 'Image coming soon'}</span>
                             </div>
                             <span class="pmodal-slide-badge">${i + 1} / ${slides.length}</span>
+                            ${bodyHTML}
                         </div>`;
                 }
 
-                // Tool tags
-                const toolsHTML = s.tools
-                    ? s.tools.map(t => `<span class="portfolio-tool-tag">${t}</span>`).join('')
-                    : '';
-
-                slide.innerHTML = `
-                    ${mediaHTML}
-                    <div class="pmodal-slide-body">
-                        <div class="pmodal-slide-label">${s.label}</div>
-                        <div class="pmodal-slide-title">${s.title}</div>
-                        <p class="pmodal-slide-desc">${s.desc}</p>
-                        ${toolsHTML ? `<div class="pmodal-slide-tools">${toolsHTML}</div>` : ''}
-                    </div>`;
+                slide.innerHTML = mediaHTML;
 
                 track.appendChild(slide);
             });
@@ -4724,7 +4755,7 @@
             updatePModalCarousel();
         };
 
-        function openPortfolioModal(key) {
+        window.openPortfolioModal = function openPortfolioModal(key) {
             const data = portfolioData[key];
             if (!data) return;
 
@@ -4745,14 +4776,14 @@
             }, 50);
         }
 
-        function closePortfolioModal() {
+        window.closePortfolioModal = function closePortfolioModal() {
             const overlay = document.getElementById('portfolioModalOverlay');
             overlay.classList.remove('open');
             overlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
-        function handlePortfolioOverlayClick(e) {
+        window.handlePortfolioOverlayClick = function handlePortfolioOverlayClick(e) {
             if (e.target === document.getElementById('portfolioModalOverlay')) {
                 closePortfolioModal();
             }
@@ -4768,15 +4799,8 @@
                 if (e.key === 'ArrowRight') movePModalSlide(1);
                 if (e.key === 'ArrowLeft')  movePModalSlide(-1);
             }
-        
         });
 
     </script>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Michael de Leon · All Rights Reserved · Built with passion &amp; purpose.</p>
-    </footer>
-
 </body>
 </html>
