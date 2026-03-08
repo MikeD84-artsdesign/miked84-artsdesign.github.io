@@ -444,6 +444,26 @@
             animation: fadeInUp 0.8s ease-out 0.65s both;
         }
 
+        .hero-credentials-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: rgba(200, 160, 74, 0.70);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out 0.9s both;
+        }
+
+        .hero-credentials-link:hover {
+            color: #c8a04a;
+            letter-spacing: 1.8px;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -655,6 +675,121 @@
             line-height: 1.4;
         }
 
+        /* ── Certifications ── */
+        .about-certs-wrap {
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 245, 225, 0.08);
+        }
+
+        .about-certs-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-certs-header i {
+            color: #c8a04a;
+            font-size: 1.2rem;
+        }
+
+        .about-certs-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #f5edda;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .certs-progress {
+            margin-left: auto;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #c8a04a;
+            background: rgba(200, 160, 74, 0.10);
+            border: 1px solid rgba(200, 160, 74, 0.25);
+            border-radius: 20px;
+            padding: 4px 12px;
+        }
+
+        .about-certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 252, 248, 0.04);
+            border: 1px solid rgba(255, 245, 225, 0.10);
+            border-radius: 14px;
+            padding: 1.1rem 1.2rem;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cert-card:hover {
+            border-color: rgba(200, 160, 74, 0.35);
+            transform: translateY(-3px);
+        }
+
+        .cert-icon {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: rgba(200, 160, 74, 0.10);
+            border: 1px solid rgba(200, 160, 74, 0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c8a04a;
+            font-size: 1.1rem;
+        }
+
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            flex: 1;
+        }
+
+        .cert-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f5edda;
+            line-height: 1.3;
+        }
+
+        .cert-issuer {
+            font-size: 0.75rem;
+            color: #c8a04a;
+            letter-spacing: 0.5px;
+        }
+
+        .cert-date {
+            font-size: 0.70rem;
+            color: rgba(215, 198, 165, 0.50);
+            letter-spacing: 0.5px;
+        }
+
+        .cert-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #5dba7d;
+            background: rgba(93, 186, 125, 0.10);
+            border: 1px solid rgba(93, 186, 125, 0.25);
+            border-radius: 20px;
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
+
         .about-drive {
             font-size: 0.88rem;
             color: rgba(200, 180, 140, 0.60);
@@ -768,7 +903,8 @@
         .section-subtitle {
             color: #e8e0d0;
             font-size: 1.1rem;
-            max-width: 520px;
+            max-width: fit-content;
+            white-space: nowrap;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(8px);
@@ -778,6 +914,259 @@
             padding: 1rem 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
             line-height: 1.7;
+        }
+
+        /* ── Credentials & Training Section ── */
+        .credentials-section {
+            padding: 5rem 0;
+        }
+
+        .creds-progress-bar-wrap {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .creds-progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            font-size: 0.82rem;
+            color: rgba(215, 198, 165, 0.70);
+            letter-spacing: 0.5px;
+        }
+
+        .creds-fraction {
+            color: #c8a04a;
+            font-weight: 600;
+        }
+
+        .creds-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 245, 225, 0.08);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .creds-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #c8a04a, #f0d080);
+            border-radius: 99px;
+            transition: width 1s ease;
+        }
+
+        .creds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cred-card {
+            background: rgba(255, 252, 248, 0.04);
+            border: 1px solid rgba(255, 245, 225, 0.10);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cred-card:hover {
+            border-color: rgba(200, 160, 74, 0.45);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        }
+
+        .cred-thumb-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .cred-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .cred-card:hover .cred-thumb {
+            transform: scale(1.04);
+        }
+
+        .cred-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 8, 5, 0.55);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: #f5edda;
+        }
+
+        .cred-thumb-overlay i {
+            font-size: 1.8rem;
+            color: #c8a04a;
+        }
+
+        .cred-thumb-overlay span {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cred-card:hover .cred-thumb-overlay {
+            opacity: 1;
+        }
+
+        .cred-info {
+            padding: 1rem 1.2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .cred-issuer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .cred-issuer-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #c8a04a;
+            background: rgba(200, 160, 74, 0.10);
+            border: 1px solid rgba(200, 160, 74, 0.25);
+            border-radius: 20px;
+            padding: 3px 10px;
+        }
+
+        .cred-badge-done {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #5dba7d;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cred-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f5edda;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .cred-date {
+            font-size: 0.72rem;
+            color: rgba(215, 198, 165, 0.50);
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Certificate Lightbox ── */
+        .cert-lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 3, 1, 0.92);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .cert-lightbox-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cert-lightbox-box {
+            position: relative;
+            max-width: 860px;
+            width: 100%;
+            background: rgba(20, 14, 8, 0.95);
+            border: 1px solid rgba(200, 160, 74, 0.25);
+            border-radius: 20px;
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-lightbox-overlay.open .cert-lightbox-box {
+            transform: scale(1);
+        }
+
+        .cert-lightbox-img {
+            width: 100%;
+            display: block;
+        }
+
+        .cert-lightbox-info {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(200, 160, 74, 0.15);
+        }
+
+        .cert-lightbox-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #f5edda;
+            margin: 0;
+        }
+
+        .cert-lightbox-info span {
+            font-size: 0.75rem;
+            color: rgba(215, 198, 165, 0.55);
+        }
+
+        .cert-lightbox-close {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(209,178,128,0.3);
+            background: rgba(10,8,5,0.80);
+            color: #d1b280;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background 0.2s ease;
+        }
+
+        .cert-lightbox-close:hover {
+            background: rgba(200,160,74,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .creds-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ── Service Tab + Carousel ── */
@@ -2307,9 +2696,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
             width: 100%;
-            padding-top: 1rem;
+            padding-top: 0.6rem;
             border-top: 1px solid rgba(255, 245, 225, 0.08);
         }
 
@@ -2825,19 +3214,18 @@
             justify-content: center;
             width: 55px;
             height: 55px;
-            background: var(--accent-primary);
-            color: white;
+            background: linear-gradient(135deg, #c8a04a, #d4b870);
+            color: #1a1006;
             border-radius: 10px;
             text-decoration: none;
             font-size: 1.3rem;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 5px 20px rgba(200, 160, 74, 0.40);
         }
 
         .email-icon-circle:hover {
             transform: scale(1.1) rotate(10deg);
-            background: white;
-            color: var(--accent-primary);
+            box-shadow: 0 8px 28px rgba(200, 160, 74, 0.60);
         }
 
         .email-oval-text {
@@ -2919,7 +3307,7 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 9px;
+            gap: 1.5rem;
             margin-top: 0;
         }
 
@@ -2927,15 +3315,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
-            min-width: 100px;
+            min-width: 80px;
         }
 
         .social-link i {
-            font-size: 3rem;
+            font-size: 2.6rem;
             display: block;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
         }
 
         .icon-name {
@@ -2990,11 +3387,158 @@
             z-index: 1;
         }
 
+        /* ─── Footer Rebuilt ─── */
+        footer {
+            text-align: center;
+            padding: 3.5rem 2rem 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(200, 160, 74, 0.2);
+            position: relative;
+            background-image: url("images/chocolate.jpg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(8, 5, 2, 0.92);
+            z-index: 1;
+        }
+
+        .footer-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .footer-logo img {
+            height: 48px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo img:hover { opacity: 1; }
+
+        .footer-tagline {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(200, 160, 74, 0.50);
+            margin-top: -1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.73rem;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: rgba(200, 160, 74, 0.60);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover { color: #c8a04a; letter-spacing: 1.8px; }
+
+        .footer-links a.footer-credentials {
+            color: rgba(200, 160, 74, 0.90);
+            border-bottom: 1px solid rgba(200, 160, 74, 0.35);
+            padding-bottom: 1px;
+        }
+
+        .footer-links a.footer-credentials:hover {
+            color: #c8a04a;
+            border-bottom-color: #c8a04a;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 160, 74, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(200, 160, 74, 0.65);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            background: rgba(200, 160, 74, 0.12);
+            border-color: #c8a04a;
+            color: #c8a04a;
+            transform: translateY(-3px);
+        }
+
+        .footer-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #c8a04a, #d4b870);
+            color: #1a1006;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            text-decoration: none;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(200, 160, 74, 0.30);
+        }
+
+        .footer-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 28px rgba(200, 160, 74, 0.50);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 245, 225, 0.06);
+        }
+
         footer p {
             position: relative;
             z-index: 2;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
+            color: rgba(200, 180, 140, 0.40);
+        }
+
+        @media (max-width: 480px) {
+            .footer-links { gap: 0.4rem 1.2rem; }
+            .footer-socials { gap: 0.7rem; }
         }
 
         /* ─── Animations ─── */
@@ -3354,6 +3898,9 @@
                         <a href="#contact" class="btn btn-primary">Let's Work Together</a>
                         <a href="#work" class="btn btn-secondary">View My Work</a>
                     </div>
+                    <a href="#credentials" class="hero-credentials-link">
+                        <i class="fas fa-award"></i> View Credentials & Training
+                    </a>
                 </div>
 
             </div>
@@ -3421,13 +3968,106 @@
         </div>
     </section>
 
+    <!-- Credentials & Training Section -->
+    <section class="section credentials-section" id="credentials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Credentials &amp; Training</h2>
+                <p class="section-subtitle">Verified expertise — issued by Anthropic</p>
+            </div>
+
+            <div class="creds-progress-bar-wrap">
+                <div class="creds-progress-label">
+                    <span>Anthropic Certification Track</span>
+                    <span class="creds-fraction">3 / 14 Completed</span>
+                </div>
+                <div class="creds-bar-bg">
+                    <div class="creds-bar-fill" style="width: 21.4%"></div>
+                </div>
+            </div>
+
+            <div class="creds-grid">
+
+                <!-- Card 1 -->
+                <div class="cred-card" onclick="openCertLightbox('images/cert_claude_101.jpg', 'Claude 101', 'Anthropic', '2025')" role="button" tabindex="0" aria-label="View Claude 101 certificate" onkeydown="if(event.key==='Enter')openCertLightbox('images/cert_claude_101.jpg','Claude 101','Anthropic','2025')">
+                    <div class="cred-thumb-wrap">
+                        <img src="images/cert_claude_101.jpg" alt="Claude 101 Certificate" loading="lazy" class="cred-thumb">
+                        <div class="cred-thumb-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Certificate</span>
+                        </div>
+                    </div>
+                    <div class="cred-info">
+                        <div class="cred-issuer-row">
+                            <span class="cred-issuer-tag">ANTHROPIC</span>
+                            <span class="cred-badge-done"><i class="fas fa-check-circle"></i> Completed</span>
+                        </div>
+                        <h4 class="cred-name">Claude 101</h4>
+                        <span class="cred-date">2025</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="cred-card" onclick="openCertLightbox('images/cert_claude_code.jpg', 'Claude Code in Action', 'Anthropic', 'March 7, 2026')" role="button" tabindex="0" aria-label="View Claude Code in Action certificate" onkeydown="if(event.key==='Enter')openCertLightbox('images/cert_claude_code.jpg','Claude Code in Action','Anthropic','March 7, 2026')">
+                    <div class="cred-thumb-wrap">
+                        <img src="images/cert_claude_code.jpg" alt="Claude Code in Action Certificate" loading="lazy" class="cred-thumb">
+                        <div class="cred-thumb-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Certificate</span>
+                        </div>
+                    </div>
+                    <div class="cred-info">
+                        <div class="cred-issuer-row">
+                            <span class="cred-issuer-tag">ANTHROPIC</span>
+                            <span class="cred-badge-done"><i class="fas fa-check-circle"></i> Completed</span>
+                        </div>
+                        <h4 class="cred-name">Claude Code in Action</h4>
+                        <span class="cred-date">March 7, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="cred-card" onclick="openCertLightbox('images/cert_ai_fluency.jpg', 'AI Fluency: Framework &amp; Foundations', 'Anthropic', '2025')" role="button" tabindex="0" aria-label="View AI Fluency certificate" onkeydown="if(event.key==='Enter')openCertLightbox('images/cert_ai_fluency.jpg','AI Fluency: Framework & Foundations','Anthropic','2025')">
+                    <div class="cred-thumb-wrap">
+                        <img src="images/cert_ai_fluency.jpg" alt="AI Fluency Certificate" loading="lazy" class="cred-thumb">
+                        <div class="cred-thumb-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Certificate</span>
+                        </div>
+                    </div>
+                    <div class="cred-info">
+                        <div class="cred-issuer-row">
+                            <span class="cred-issuer-tag">ANTHROPIC</span>
+                            <span class="cred-badge-done"><i class="fas fa-check-circle"></i> Completed</span>
+                        </div>
+                        <h4 class="cred-name">AI Fluency: Framework &amp; Foundations</h4>
+                        <span class="cred-date">2025</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Lightbox -->
+    <div class="cert-lightbox-overlay" id="certLightbox" onclick="closeCertLightbox()" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cert-lightbox-box" onclick="event.stopPropagation()">
+            <button class="cert-lightbox-close" onclick="closeCertLightbox()" aria-label="Close certificate">&times;</button>
+            <img src="" id="certLightboxImg" alt="Certificate" class="cert-lightbox-img">
+            <div class="cert-lightbox-info">
+                <h4 id="certLightboxName"></h4>
+                <span id="certLightboxMeta"></span>
+            </div>
+        </div>
+    </div>
+
     <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Services</h2>
                 <p class="section-subtitle">
-                    Specialized services tailored to bring your vision to life
+                    Delivering smarter, faster results — with the help of Claude AI
                 </p>
             </div>
 
@@ -3893,7 +4533,7 @@
     </section>
 
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 
 
         // ─── Navigation ───
@@ -4793,6 +5433,7 @@
             if (e.key === 'Escape') {
                 closeServiceModal();
                 closePortfolioModal();
+                closeCertLightbox();
             }
             const overlay = document.getElementById('portfolioModalOverlay');
             if (overlay && overlay.classList.contains('open')) {
@@ -4801,12 +5442,27 @@
             }
         });
 
+        // ── Certificate Lightbox ──
+        window.openCertLightbox = function(src, name, issuer, date) {
+            const overlay = document.getElementById('certLightbox');
+            document.getElementById('certLightboxImg').src = src;
+            document.getElementById('certLightboxName').textContent = name;
+            document.getElementById('certLightboxMeta').textContent = issuer + ' · ' + date;
+            overlay.classList.add('open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeCertLightbox = function() {
+            const overlay = document.getElementById('certLightbox');
+            overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
     </script>
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Michael De Leon &mdash; Virtual Assistant &amp; Freelance Professional. All rights reserved.</p>
-        </div>
+        <p>&copy; 2025 Michael De Leon &mdash; Virtual Assistant &amp; Freelance Professional. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
