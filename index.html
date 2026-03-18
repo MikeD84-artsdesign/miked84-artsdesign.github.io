@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.Deleon - Website Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- ─── SEO Meta Tags ─── -->
+    <title>Michael De Leon — VA Professional Freelancer | Virtual Assistant, Copywriter & Automation Specialist</title>
+    <meta name="description" content="Michael De Leon is a VA Professional Freelancer helping busy business owners reach their goals and reclaim time freedom. Services include Virtual Assistant, Social Media Management, AI Automation, Copywriting, and Lead Generation.">
+    <meta name="keywords" content="Virtual Assistant, Freelancer, Copywriter, AI Automation, Social Media Management, Lead Generation, Michael De Leon, VA Freelancer">
+    <meta name="author" content="Michael De Leon">
+    <meta name="robots" content="index, follow">
+
+    <!-- ─── Open Graph (Social Sharing) ─── -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miked84-artsdesign.github.io">
+    <meta property="og:title" content="Michael De Leon — VA Professional Freelancer">
+    <meta property="og:description" content="Helping busy business owners reach their goals and have time freedom. VA · Copywriter · Automation Specialist.">
+    <meta property="og:image" content="https://miked84-artsdesign.github.io/images/logo_nav.png">
+
+    <!-- ─── Twitter Card ─── -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Michael De Leon — VA Professional Freelancer">
+    <meta name="twitter:description" content="Helping busy business owners reach their goals and have time freedom. VA · Copywriter · Automation Specialist.">
+    <meta name="twitter:image" content="https://miked84-artsdesign.github.io/images/logo_nav.png">
+
+    <!-- ─── Google Fonts ─── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/png" href="images/logo_favicon.png">
     <link rel="shortcut icon" type="image/png" href="images/logo_favicon.png">
     <style>
@@ -919,6 +943,59 @@
         /* ── Credentials & Training Section ── */
         .credentials-section {
             padding: 5rem 0;
+        }
+
+        /* Anthropic light steel blue gradient override for credentials */
+        .credentials-section::before {
+            background-image: none !important;
+            background: linear-gradient(135deg,
+                #1a3a5c 0%,
+                #2a6090 25%,
+                #4a90c4 50%,
+                #6ab0d8 75%,
+                #8ac8e8 100%) !important;
+            filter: none !important;
+        }
+
+        .credentials-section::after {
+            background: rgba(8, 25, 48, 0.60) !important;
+        }
+
+        /* Anthropic + Claude logos on credentials background */
+        .credentials-section .container {
+            position: relative;
+        }
+
+        .creds-logo-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.55;
+            position: relative;
+            z-index: 2;
+        }
+
+        .creds-logo-bar img {
+            height: 64px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .creds-logo-bar img.anthropic-logo {
+            filter: none;
+        }
+
+        .creds-logo-bar img.claude-logo {
+            height: 64px;
+            border-radius: 14px;
+        }
+
+        .creds-logo-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.30);
         }
 
         .creds-progress-bar-wrap {
@@ -3080,7 +3157,6 @@
             padding: 5rem 0 6rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
             width: 100vw;
             left: 50%;
             right: 50%;
@@ -3089,25 +3165,34 @@
             scroll-margin-top: 0px;
         }
 
-        /* Blurred background layer */
+        /* Parallax background layer */
         .contact-section::before {
             content: '';
             position: absolute;
-            inset: -20px;
-            background-image: url("images/contact_desk.jpg");
+            top: -80px;
+            left: 0;
+            right: 0;
+            bottom: -80px;
+            background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80");
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
-            filter: blur(2px);
+            background-attachment: fixed;
+            filter: brightness(0.55);
             z-index: 0;
         }
 
-        /* Dark overlay on top of blur */
+        /* Dark overlay on top */
         .contact-section::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(8, 5, 2, 0.45);
+            background: linear-gradient(
+                to bottom,
+                rgba(8, 5, 2, 0.65) 0%,
+                rgba(8, 5, 2, 0.15) 50%,
+                rgba(8, 5, 2, 0.65) 100%
+            );
             z-index: 1;
         }
 
@@ -3976,13 +4061,20 @@
                 <p class="section-subtitle">Verified expertise — issued by Anthropic</p>
             </div>
 
+            <!-- Anthropic + Claude Logo Bar -->
+            <div class="creds-logo-bar">
+                <img src="images/Anthropic_logo.png" alt="Anthropic" class="anthropic-logo">
+                <div class="creds-logo-divider"></div>
+                <img src="images/Claude_logo.png" alt="Claude" class="claude-logo">
+            </div>
+
             <div class="creds-progress-bar-wrap">
                 <div class="creds-progress-label">
                     <span>Anthropic Certification Track</span>
-                    <span class="creds-fraction">3 / 14 Completed</span>
+                    <span class="creds-fraction">4 / 14 Completed</span>
                 </div>
                 <div class="creds-bar-bg">
-                    <div class="creds-bar-fill" style="width: 21.4%"></div>
+                    <div class="creds-bar-fill" style="width: 28.6%"></div>
                 </div>
             </div>
 
@@ -4027,7 +4119,7 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="cred-card" onclick="openCertLightbox('images/cert_ai_fluency.jpg', 'AI Fluency: Framework &amp; Foundations', 'Anthropic', '2025')" role="button" tabindex="0" aria-label="View AI Fluency certificate" onkeydown="if(event.key==='Enter')openCertLightbox('images/cert_ai_fluency.jpg','AI Fluency: Framework & Foundations','Anthropic','2025')">
+                <div class="cred-card" onclick="openCertLightbox('images/cert_ai_fluency.jpg', 'AI Fluency: Framework &amp; Foundations', 'Anthropic', '2025')" role="button" tabindex="0" aria-label="View AI Fluency certificate" onkeydown="if(event.key='Enter')openCertLightbox('images/cert_ai_fluency.jpg','AI Fluency: Framework & Foundations','Anthropic','2025')">
                     <div class="cred-thumb-wrap">
                         <img src="images/cert_ai_fluency.jpg" alt="AI Fluency Certificate" loading="lazy" class="cred-thumb">
                         <div class="cred-thumb-overlay">
@@ -4042,6 +4134,25 @@
                         </div>
                         <h4 class="cred-name">AI Fluency: Framework &amp; Foundations</h4>
                         <span class="cred-date">2025</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="cred-card" onclick="openCertLightbox('images/cert_anthropic_api.jpg', 'Claude with the Anthropic API', 'Anthropic', 'March 18, 2026')" role="button" tabindex="0" aria-label="View Claude with the Anthropic API certificate" onkeydown="if(event.key==='Enter')openCertLightbox('images/cert_anthropic_api.jpg','Claude with the Anthropic API','Anthropic','March 18, 2026')">
+                    <div class="cred-thumb-wrap">
+                        <img src="images/cert_anthropic_api.jpg" alt="Claude with the Anthropic API Certificate" loading="lazy" class="cred-thumb">
+                        <div class="cred-thumb-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span>View Certificate</span>
+                        </div>
+                    </div>
+                    <div class="cred-info">
+                        <div class="cred-issuer-row">
+                            <span class="cred-issuer-tag">ANTHROPIC</span>
+                            <span class="cred-badge-done"><i class="fas fa-check-circle"></i> Completed</span>
+                        </div>
+                        <h4 class="cred-name">Claude with the Anthropic API</h4>
+                        <span class="cred-date">March 18, 2026</span>
                     </div>
                 </div>
 
@@ -4509,7 +4620,7 @@
                         <i class="fas fa-share-nodes"></i>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.youtube.com/@MikeyD0531" class="social-link yt" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.youtube.com/@ScaleWithMikeyasfreelancer" class="social-link yt" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-youtube"></i>
                             <span class="icon-name">YouTube</span>
                         </a>
